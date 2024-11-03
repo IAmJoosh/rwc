@@ -1,0 +1,8 @@
+[package]
+name = "rwc"
+version = "0.1.0"
+authors = ["Joshua Whittaker"]
+edition = "2021"
+description = "A Rust version of the wc (word count) Unix CLI tool"
+
+[dependencies]
