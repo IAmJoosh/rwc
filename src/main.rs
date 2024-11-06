@@ -3,6 +3,8 @@ use std::fs;
 use std::path::Path;
 use std::process;
 
+const FORM_FEED: u8 = 12;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -40,7 +42,12 @@ fn main() {
             line_count += 1;
         }
 
-        if !(vec![9, 10, 12, 13, 32].contains(&a_byte)) {
+        if a_byte == b'\t'
+            || a_byte == b'\n'
+            || a_byte == FORM_FEED
+            || a_byte == b'\r'
+            || a_byte == b' '
+        {
             in_word = false;
         } else if !in_word {
             in_word = true;
